@@ -1,0 +1,18 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class='section'>
+    <navigator url='../getPrice/getPrice' open-type='navigate' class='section-text'>
+      <text>报价查询</text>
+    </navigator>
+  </view>
+  <view class='section'>
+    <navigator url='../quotedPrice/quotedPrice' open-type='navigate' class='section-text'>
+      <text>我要报价</text>
+    </navigator>
+  </view>
+    <view class='section'>
+    <navigator url='../nba/nba' open-type='navigate' class='section-text'>
+      <text>NBA赛事信息</text>
+    </navigator>
+  </view>
+</view>

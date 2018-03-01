@@ -1,0 +1,69 @@
+/* pages/getPrice/getPrice.wxss */
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+form{
+  margin-top: 40rpx;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.section {
+  height: auto;
+  width: 100%;
+  background: #fff; 
+  border-bottom: 1rpx solid #f6f6f6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.section__title {
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+  min-width: 25%;
+}
+
+.picker {
+  height: 100rpx;
+  width: 100%; 
+  padding: 0 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+}
+input{
+  height: 100rpx;
+  /* width: 100%; */
+  padding: 0 40rpx;
+  margin-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sresult{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #f6f6f6;
+  padding:0 40rpx;
+}
+.btn-area{
+  display: flex;
+  flex-direction: row;
+  padding: 40rpx 0;
+}
+.btn-area button{
+  width: 80%;
+   background-color: #09BB07;
+  color: white;
+}

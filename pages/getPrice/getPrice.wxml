@@ -1,0 +1,35 @@
+<!--pages/getPrice/getPrice.wxml-->
+<view class='container'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <view class="section__title">服务器选择</view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          {{multiArray[0][multiIndex[0]]}}>{{multiArray[1][multiIndex[1]]}}
+        </view>
+        
+      </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">物品名称</view>
+      <input type="text" placeholder='请输入物品名称' />
+    </view>
+
+    <view class="section">
+      <view class="section__title">成交时间</view>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="{{today}}" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+   <!-- <view class="section sresult" wx:if="{{sresult.data}}">
+   <view class="section__title">查询结果</view>
+   <text>{{sresult.data}}</text>
+  </view> -->
+   <view class="btn-area">
+   <button bindtap="formSubmit" type="primary" disabled="{{buttonDisabled}}" loading="{{loading}}">查询</button>
+      <!-- <button formType="reset">重置</button> -->
+    </view>
+  </form>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/nba/nba.wxml-->
+<view class='section'>
+  <view class="section__title">昨天赛程结果</view>
+  <view wx:for="{{nbanews.list[0].tr}}">
+    <text class='section__text'>{{nbanews.list[0].tr[index].player1}}-{{nbanews.list[0].tr[index].player2}} 比分{{nbanews.list[0].tr[index].score}}</text>
+  </view>
+</view>
+<view class='section'>
+  <view class="section__title">今日赛程结果</view>
+  <view wx:for="{{nbanews.list[1].tr}}">
+    <text class='section__text'>{{nbanews.list[1].tr[index].player1}}-{{nbanews.list[1].tr[index].player2}} 比分{{nbanews.list[1].tr[index].score}}</text>
+  </view>
+</view>
+<view class='section'>
+  <view class="section__title">明天赛事预告</view>
+  <view wx:for="{{nbanews.list[2].tr}}">
+    <text class='section__text'>{{nbanews.list[1].tr[index].time}}：{{nbanews.list[1].tr[index].player1}}-{{nbanews.list[1].tr[index].player2}}</text>
+  </view>
+</view>
