@@ -43,12 +43,6 @@ Page({
         }
       })
     }
-    setTimeout(
-      function(){
-        wx.redirectTo({
-          url: '../home/home'
-        })
-      },1500)
   },
   getUserInfo: function(e) {
     console.log(e)

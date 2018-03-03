@@ -2,10 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/home/home",
     "pages/getPrice/getPrice",
     "pages/quotedPrice/quotedPrice",
-    "pages/nba/nba"
+    "pages/nba/nba",
+    "pages/template/template"
   ],
   "window":{
     "backgroundTextStyle":"light",

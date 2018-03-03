@@ -1,6 +1,8 @@
 // pages/quotedPrice/quotedPrice.js
 var config = require('../../config')
 var util = require('../../utils/util.js')
+var sourceType = [['camera'], ['album'], ['camera', 'album']]
+var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 //获取应用实例
 const app = getApp()
 
@@ -81,23 +83,31 @@ Page({
     multiIndex: [0, 0],
     date: new Date().toLocaleDateString(),
     today: new Date().toLocaleDateString(),
-    imgUrl: 'http://image.ijq.tv/201512/12/22-42-30-55-1.jpg',
-    sresult: {}
+    imgUrl:'',
+    imageList: [],
+    sourceTypeIndex: 2,
+    sourceType: ['拍照', '相册', '拍照或相册'],
+
+    sizeTypeIndex: 2,
+    sizeType: ['压缩', '原图', '压缩或原图'],
+
+    // countIndex: 8,
+    // count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    countIndex: 0,
+    count: [1]
   },
 
   bindMultiPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      multiIndex: e.detail.value,
-      // sresult: sdata
+      multiIndex: e.detail.value
     })
   },
   bindMultiPickerColumnChange: function (e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex,
-      sresult: this.data.sresult
+      multiIndex: this.data.multiIndex
     };
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
@@ -127,106 +137,110 @@ Page({
       date: e.detail.value
     })
   },
-  // 上传图片接口
-  doUpload: function () {
+  chooseImage: function () {
     var that = this
-
-    // 选择图片
     wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
+      sourceType: sourceType[this.data.sourceTypeIndex],
+      sizeType: sizeType[this.data.sizeTypeIndex],
+      count: this.data.count[this.data.countIndex],
       success: function (res) {
-        util.showBusy('正在上传')
-        var filePath = res.tempFilePaths[0]
-
-        // 上传图片
-        wx.uploadFile({
-          url: config.service.uploadUrl,
-          filePath: filePath,
-          name: 'file',
-
-          success: function (res) {
-            util.showSuccess('上传图片成功')
-            console.log(res)
-            res = JSON.parse(res.data)
-            console.log(res)
-            that.setData({
-              imgUrl: res.data.imgUrl
-            })
-          },
-
-          fail: function (e) {
-            util.showModel('上传图片失败', e)
-          }
+        console.log(res)
+        that.setData({
+          imageList: res.tempFilePaths
         })
-
-      },
-      fail: function (e) {
-        console.error(e)
       }
     })
   },
+  previewImage: function (e) {
+    var current = e.target.dataset.src
 
-  // 预览图片
-  previewImg: function () {
     wx.previewImage({
-      current: this.data.imgUrl,
-      urls: [this.data.imgUrl]
+      current: current,
+      urls: this.data.imageList
     })
   },
+
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var self = this
-    self.setData({
-      loading: true
-    })
-    wx.request({
-      url: '',
-      data:{
+    var imageSrc = self.data.imageList[0]
+    if(imageSrc)
+    {
+      self.setData({
+        loading: true
+      })
 
-      },
-      success:res=>{
-        self.setData({
-          loading: false
-        })
-      },
-      fail:function(){
-        
-      }
-    })
+      util.showBusy('上传图片中...')
+      // 上传图片
+      wx.uploadFile({
+        url: config.service.uploadUrl,
+        filePath: imageSrc,
+        name: 'file',
+
+        success: function (res) {
+          util.showSuccess('上传图片成功')
+          console.log(res)
+          res = JSON.parse(res.data)
+          console.log(res)
+          self.setData({
+            imgUrl: res.data.imgUrl
+          })
+
+          util.showBusy('表单提交中...')
+          //提交表单
+          wx.request({
+            url: config.service.quotedPrice,
+            data: {
+
+            },
+            success: res => {
+              self.setData({
+                loading: false
+              })
+              util.showSuccess('提交成功')
+            },
+            fail: function () {
+
+            }
+          })
+        },
+
+        fail: function (e) {
+          util.showModel('上传图片失败', e)
+        }
+      })
+    }else{
+      util.showModel('提示','请选择交易截图')
+    }
   },
+  getUserInfo: function () {
+    var that = this
 
+    if (app.globalData.hasLogin === false) {
+      wx.login({
+        success: _getUserInfo
+      })
+    } else {
+      _getUserInfo()
+    }
+
+    function _getUserInfo() {
+      wx.getUserInfo({
+        success: function (res) {
+          that.setData({
+            hasUserInfo: true,
+            userInfo: res.userInfo
+          })
+          that.update()
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    this.getUserInfo();
   },
 
   /**

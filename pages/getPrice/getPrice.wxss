@@ -49,21 +49,3 @@ input{
   flex-direction: row;
   align-items: center;
 }
-
-.sresult{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: #f6f6f6;
-  padding:0 40rpx;
-}
-.btn-area{
-  display: flex;
-  flex-direction: row;
-  padding: 40rpx 0;
-}
-.btn-area button{
-  width: 80%;
-   background-color: #09BB07;
-  color: white;
-}

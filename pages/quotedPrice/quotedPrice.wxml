@@ -1,22 +1,21 @@
 <!--pages/quotedPrice/quotedPrice.wxml-->
 <view class='container'>
-  <form bindsubmit="formSubmit" bindreset="formReset">
-   <view class="section" wx:if="{{hasUserInfo && canIUse}}">
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="section">
       <view class="section__title">昵称</view>
-      <input type="text" value="{{userInfo.nickName}}" />
+      <input type="text" name='nickName' value="{{userInfo.nickName}}" />
     </view>
     <view class="section">
       <view class="section__title">服务器选择</view>
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" name='server' value="{{multiIndex}}" range="{{multiArray}}">
         <view class="picker">
           {{multiArray[0][multiIndex[0]]}}>{{multiArray[1][multiIndex[1]]}}
         </view>
-        <text wx:if="{{sresult.data}}">{{sresult.data}}</text>
       </picker>
     </view>
     <view class="section">
       <view class="section__title">收售</view>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <picker bindchange="bindPickerChange" name='type' value="{{index}}" range="{{array}}">
         <view class="picker">
           {{array[index]}}
         </view>
@@ -24,33 +23,49 @@
     </view>
     <view class="section">
       <view class="section__title">物品名称</view>
-      <input type="text" placeholder='请输入物品名称' />
+      <input type="text" name='goodsName' placeholder='请输入物品名称' />
     </view>
     <view class="section">
       <view class="section__title">价格（元）</view>
-      <input type="digit" placeholder='请输入价格' />
+      <input type="digit" name='goodsPrice' placeholder='请输入价格' />
     </view>
     <view class="section">
       <view class="section__title">成交时间</view>
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="{{today}}" bindchange="bindDateChange">
+      <picker mode="date" name='dealTime' value="{{date}}" start="2015-09-01" end="{{today}}" bindchange="bindDateChange">
         <view class="picker">
           {{date}}
         </view>
       </picker>
     </view>
-    <view class='section'>
-      <view class="uploader">
-        <view class="uploader-text" bindtap="doUpload">
-          <text>上传交易截图</text>
-          
+
+        <view class="section">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">选择交易截图</view>
+                  <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image">
+                      <view class="weui-uploader__file">
+                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                        <input type='text' hidden='hidden' name='imgUrl' value='{{image}}'></input>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
         </view>
-        <view class="uploader-container" wx:if="{{imgUrl}}">
-          <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-        </view>
-      </view>
-    </view>
+
     <view class="btn-area">
-      <button bindtap="formSubmit" type="primary" disabled="{{buttonDisabled}}" loading="{{loading}}">提交报价</button>
+      <button type="primary" form-type='submit' disabled="{{buttonDisabled}}" loading="{{loading}}">提交报价</button>
       <!-- <button formType="reset">重置</button> -->
     </view>
   </form>

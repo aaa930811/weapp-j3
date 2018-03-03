@@ -7,13 +7,10 @@ page {
 }
 
 .section {
-  height: auto;
   width: 100%;
   background: #fff; 
   border-bottom: 1rpx solid #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   transition: all 300ms ease;
   padding: 40rpx 0 20rpx 0;
 }

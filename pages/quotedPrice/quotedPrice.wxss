@@ -1,4 +1,5 @@
 /* pages/quotedPrice/quotedPrice.wxss */
+@import "../common/lib/weui.wxss";
 page {
   background: #f6f6f6;
   display: flex;
@@ -49,41 +50,6 @@ input{
   flex-direction: row;
   align-items: center;
 }
-.uploader{
-  padding: 0 40rpx;
+.weui-cell{
   width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.uploader-text{
-    width: 100%;
-    line-height: 52px;
-    font-size: 34rpx;
-    color: #007AFF;
-}
-
-.uploader-container {
-    width: 100%;
-    height: 400rpx;
-    padding: 20rpx 20rpx 20rpx 0;
-    display: flex;
-    align-content: center;
-    /* justify-content: center; */
-    box-sizing: border-box;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-}
-
-.uploader-image {
-    width: 100%;
-    height: 360rpx;
-}
-.btn-area{
-  display: flex;
-  flex-direction: row;
-  padding: 40rpx 0;
-}
-.btn-area button{
-  width: 80%;
-   background-color: #09BB07;
-  color: white;
 }
