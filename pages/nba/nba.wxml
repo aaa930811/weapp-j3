@@ -15,7 +15,7 @@
 <view class='section'>
   <view class="section__title">明天赛事预告</view>
   <view wx:for="{{nbanews.list[2].tr}}">
-    <text class='section__text'>{{nbanews.list[1].tr[index].time}}：{{nbanews.list[1].tr[index].player1}}-{{nbanews.list[1].tr[index].player2}}</text>
+    <text class='section__text'>{{nbanews.list[2].tr[index].time}} {{nbanews.list[2].tr[index].player1}}-{{nbanews.list[2].tr[index].player2}}</text>
   </view>
 </view>
 </view>
