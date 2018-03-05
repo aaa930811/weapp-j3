@@ -5,6 +5,7 @@
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://f28cwwb0.qcloud.la';
 var host2 = 'https://shenao.iok.la';
+var localhost = 'http://192.168.0.104/J3Price';
 var config = {
 
   // 下面的地址配合云端 Demo 工作
@@ -30,7 +31,7 @@ var config = {
     templateMessageUrl: `https://${host}/templateMessage`,
 
     //报价数据查询地址
-    getPriceUrl: `${host}/api/GetPrice`,
+    getPriceUrl: `${localhost}/api/Quotes`,
     //getPriceUrl:`https://xn--husx06d.cn/api/values/GetPrice`
 
     //报价数据提交地址

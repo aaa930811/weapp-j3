@@ -96,39 +96,39 @@ Page({
     })
   },
 
-  doSearch: function (jwarea, jwserver) {
-    util.showBusy('查询中...')
-    var that = this
-    var options = {
-      url: config.service.getPriceUrl,
-      login: true,
-      data: {
-        jwarea: jwarea,
-        jwserver: jwserver
-      },
-      success(result) {
-        if (result.statusCode == '200') {
-          util.showSuccess('查询成功完成')
-          console.log('request success', result)
-          that.setData({
-            sresult: { data: JSON.stringify(result.data) }
-          })
-        } else {
-          util.showModel('查询失败', result.data);
-          console.log('request fail', result);
-        }
-      },
-      fail(error) {
-        util.showModel('查询失败', error);
-        console.log('request fail', error);
-      }
-    }
-    if (this.data.takeSession) {  // 使用 qcloud.request 带登录态登录
-      qcloud.request(options)
-    } else {    // 使用 wx.request 则不带登录态
-      wx.request(options)
-    }
-  },
+  // doSearch: function (jwarea, jwserver) {
+  //   util.showBusy('查询中...')
+  //   var that = this
+  //   var options = {
+  //     url: config.service.getPriceUrl,
+  //     login: true,
+  //     data: {
+  //       jwarea: jwarea,
+  //       jwserver: jwserver
+  //     },
+  //     success(result) {
+  //       if (result.statusCode == '200') {
+  //         util.showSuccess('查询成功完成')
+  //         console.log('request success', result)
+  //         that.setData({
+  //           sresult: { data: JSON.stringify(result.data) }
+  //         })
+  //       } else {
+  //         util.showModel('查询失败', result.data);
+  //         console.log('request fail', result);
+  //       }
+  //     },
+  //     fail(error) {
+  //       util.showModel('查询失败', error);
+  //       console.log('request fail', error);
+  //     }
+  //   }
+  //   if (this.data.takeSession) {  // 使用 qcloud.request 带登录态登录
+  //     qcloud.request(options)
+  //   } else {    // 使用 wx.request 则不带登录态
+  //     wx.request(options)
+  //   }
+  // },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var self = this
@@ -138,15 +138,15 @@ Page({
     })
     wx.request({
       url: config.service.getPriceUrl,
-      data:{
-
-      },
+      data: e.detail.value,
       success:res=>{
         self.setData({
           loading: false
         })
+        console.log(res.data)
+        var quotes = JSON.stringify(res.data)
         wx.navigateTo({
-          url: '../logs/logs'
+          url: '../showPrice/showPrice?quotes='+quotes,
         })
       }
     })

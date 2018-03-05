@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/getPrice/getPrice",
     "pages/quotedPrice/quotedPrice",
+    "pages/showPrice/showPrice",
     "pages/nba/nba",
     "pages/template/template"
   ],
