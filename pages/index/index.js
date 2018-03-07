@@ -7,7 +7,15 @@ Page({
     motto: '欢迎使用剑三物价',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    imgUrls: [
+      'https://i.loli.net/2017/08/14/59918cd0a7ca7.jpg',
+      'https://i.loli.net/2017/11/09/5a03f25a94182.png'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000
   },
   //事件处理函数
   bindViewTap: function() {

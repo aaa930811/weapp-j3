@@ -21,7 +21,14 @@ overflow:hidden;
   font-size: 34rpx;
   padding: 30rpx 0 30rpx 60rpx;
 }
-
+swiper{
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+}
 .disable {
   color: #888;
 }
