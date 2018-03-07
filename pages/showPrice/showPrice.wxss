@@ -3,6 +3,9 @@ page {
   font-size: 8px;
   color: #333;
 }
+.container{
+  align-items: center;
+}
 .table {
   border: 1px solid #dadada; 
   border-right: 0;

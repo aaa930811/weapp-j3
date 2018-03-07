@@ -13,7 +13,7 @@
     </view>
     <view class="tr" wx:for="{{quotes}}">
       <!-- <view class="td">{{item.RegionName}}</view> -->
-      <view class="td">{{item.ServiceName}}</view>
+      <view class="td">{{item.ServiceNickName}}</view>
       <view class="td">{{item.ProducPrice}}</view>
       <view class="td">{{item.SaleTypeName}}</view>
       <view class="td">{{item.ProductName}}</view>

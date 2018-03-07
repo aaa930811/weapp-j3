@@ -35,7 +35,13 @@ var config = {
     //getPriceUrl:`https://xn--husx06d.cn/api/values/GetPrice`
 
     //报价数据提交地址
-    quotedPrice: `${host}/api/quotedPrice`
+    quotedPrice: `${host}/api/quotedPrice`,
+
+    //获取大区
+    getRegion: `${localhost}/api/region`,
+
+    //获取服务器
+    getService: `${localhost}/api/service`
   }
 };
 
