@@ -34,7 +34,7 @@ var showModel = (title, content) => {
 
   wx.showModal({
     title,
-    content: JSON.stringify(content),
+    content:content,
     showCancel: false
   })
 }

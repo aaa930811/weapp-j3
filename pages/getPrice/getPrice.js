@@ -9,8 +9,8 @@ Page({
    */
   data: {
     multiArray: [
-      ['电信一区', '电信二区'],
-      ['长安城', '龙争虎斗', '扬州城', '枫华谷', '逍遥林']
+      [],
+      []
     ],
     regionArray:[],
     // objectMultiArray: [
@@ -47,6 +47,7 @@ Page({
     //   ]
     // ],
     multiIndex: [0, 0],
+    server:[0,1],
     date: new Date().toLocaleDateString(),
     today: new Date().toLocaleDateString()
   },
@@ -54,6 +55,7 @@ Page({
   bindMultiPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var service_key = 0;
+    var regionList = this.data.regionList;
     var serviceList = this.data.serviceList;
     var select_key = e.detail.value[1];
     var real_key = select_key - 1;
@@ -63,12 +65,14 @@ Page({
       })
     } else {
       this.setData({
-        service_id: serviceList[real_key]['service_id']　　　　　　// service_id 代表着选择的班级对应的 班级id
+        service_id: serviceList[real_key].service_id　　　　　　// service_id 代表着选择的服务器对应的 班级id
       })
     }
     this.setData({
-      multiIndex: e.detail.value
+      multiIndex: e.detail.value,
+      server: [this.data.region_id, this.data.service_id]
     })
+    console.log(this.data.server)
   },
   bindMultiPickerColumnChange: function (e) {
     //e.detail.column 改变的数组下标列, e.detail.value 改变对应列的值
@@ -78,14 +82,14 @@ Page({
       multiIndex: this.data.multiIndex
     };
     data.multiIndex[e.detail.column] = e.detail.value;
-    var region_id_session = this.data.region_id;　　　　// 保持之前的校区id 与新选择的id 做对比，如果改变则重新请求数据
+    var region_id_session = this.data.region_id;　　　　// 保持之前的大区id 与新选择的id 做对比，如果改变则重新请求数据
     switch (e.detail.column) {
       case 0:
         var regionList = this.data.regionList;
         var region_id = regionList[e.detail.value].region_id;
-        if (region_id_session != region_id) {　　　　// 与之前保持的校区id做对比，如果不一致则重新请求并赋新值
+        if (region_id_session != region_id) {　　　　// 与之前保持的大区id做对比，如果不一致则重新请求并赋新值
           this.searchService(region_id);
-          data.region_id = e.detail.value
+          data.region_id = region_id
         }
         data.multiIndex[1] = 0;
         break;
@@ -140,7 +144,7 @@ Page({
           var serviceArr = serviceList.map(item => {
             return item.service_nickname;
           })
-          serviceArr.unshift('全部服务器');　　　　　　// 接口中没有提供全部班级字段，添加之
+          serviceArr.unshift('全部服务器');　　　　　　// 接口中没有提供全部服务器字段，添加之
           var regionArr = this.data.regionArr;
           that.setData({
             multiArray: [regionArr, serviceArr],
@@ -163,7 +167,7 @@ Page({
       success:res=> {
         var regionList = res.data;
         console.log(regionList)
-        var regionArr = regionList.map(item => {　　　　// 此方法将校区名称区分到一个新数组中
+        var regionArr = regionList.map(item => {　　　　// 此方法将大区名称区分到一个新数组中
           return item.region_name;
         });
         that.setData({
@@ -171,9 +175,9 @@ Page({
           regionList,
           regionArr
         })
-        var default_region_id = regionList[0]['region_id'];　　　　//获取默认的校区对应的 teach_area_id
+        var default_region_id = regionList[0]['region_id'];　　　　//获取默认的大区对应的 region_id
         if (default_region_id>=0) {
-          that.searchService(default_region_id)　　　　　　// 如果存在调用获取对应的班级数据
+          that.searchService(default_region_id)　　　　　　// 如果存在调用获取对应的服务器数据
         }
       }
     })

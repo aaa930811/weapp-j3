@@ -31,11 +31,11 @@ var config = {
     templateMessageUrl: `https://${host}/templateMessage`,
 
     //报价数据查询地址
-    getPriceUrl: `${localhost}/api/Quotes`,
+    getPriceUrl: `${localhost}/api/Quotes/GetQuotes`,
     //getPriceUrl:`https://xn--husx06d.cn/api/values/GetPrice`
 
     //报价数据提交地址
-    quotedPrice: `${host}/api/quotedPrice`,
+    quotedPrice: `${localhost}/api/Quotes/PostQuotes`,
 
     //获取大区
     getRegion: `${localhost}/api/region`,

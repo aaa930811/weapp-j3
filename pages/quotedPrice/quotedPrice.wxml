@@ -3,19 +3,20 @@
   <form catchsubmit="formSubmit" catchreset="formReset">
     <view class="section">
       <view class="section__title">昵称</view>
-      <input type="text" name='nickName' value="{{userInfo.nickName}}" />
+      <input type="text" name='bidder' value="{{userInfo.nickName}}" />
     </view>
     <view class="section">
       <view class="section__title">服务器选择</view>
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" name='server' value="{{multiIndex}}" range="{{multiArray}}">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" name='_server' value="{{multiIndex}}" range="{{multiArray}}">
         <view class="picker">
           {{multiArray[0][multiIndex[0]]}}>{{multiArray[1][multiIndex[1]]}}
         </view>
       </picker>
+      <picker hidden='hidden' name='server' value='{{server}}'></picker>
     </view>
     <view class="section">
       <view class="section__title">收售</view>
-      <picker bindchange="bindPickerChange" name='saleType' value="{{index}}" range="{{array}}">
+      <picker bindchange="bindPickerChange" name='saleTypeCode' value="{{index}}" range="{{array}}">
         <view class="picker">
           {{array[index]}}
         </view>
@@ -51,7 +52,7 @@
                     <block wx:for="{{imageList}}" wx:for-item="image">
                       <view class="weui-uploader__file">
                         <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                        <input type='text' hidden='hidden' name='imgUrl' value='{{image}}'></input>
+                        <input type='text' hidden='hidden' name='dealImageUrl' value='{{image}}'></input>
                       </view>
                     </block>
                   </view>
