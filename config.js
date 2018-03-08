@@ -38,10 +38,10 @@ var config = {
     quotedPrice: `${localhost}/api/Quotes/PostQuotes`,
 
     //获取大区
-    getRegion: `${localhost}/api/region`,
+    getRegion: `${localhost}/api/Region/GetRegion`,
 
     //获取服务器
-    getService: `${localhost}/api/service`
+    getService: `${localhost}/api/Service/GetService`
   }
 };
 
