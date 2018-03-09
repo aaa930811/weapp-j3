@@ -25,14 +25,13 @@ var config = {
     tunnelUrl: `${host}/weapp/tunnel`,
 
     // 上传图片接口
-    uploadUrl: `${host}/weapp/upload`,
+    uploadUrl: `${localhost}/api/Pictures/Post`,
 
     // 发送模板消息接口
     templateMessageUrl: `https://${host}/templateMessage`,
 
     //报价数据查询地址
     getPriceUrl: `${localhost}/api/Quotes/GetQuotes`,
-    //getPriceUrl:`https://xn--husx06d.cn/api/values/GetPrice`
 
     //报价数据提交地址
     quotedPrice: `${localhost}/api/Quotes/PostQuotes`,

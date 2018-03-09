@@ -54,7 +54,7 @@ Page({
     server:[0, 1],
     date: new Date().toLocaleDateString(),
     today: new Date().toLocaleDateString(),
-    imgUrl:'',
+    DealImageUrl:'',
     imageList: [],
     sourceTypeIndex: 2,
     sourceType: ['拍照', '相册', '拍照或相册'],
@@ -126,8 +126,6 @@ Page({
         that.setData({
           imageList: res.tempFilePaths
         })
-        
-
           //uploadTask.abort() // 取消上传任务
       }
     })
@@ -165,15 +163,17 @@ Page({
         filePath: imageSrc,
         name: 'file',
         success: function (res) {
-          var data = res.data
           //do something
           //util.showSuccess('图片上传成功')
           console.log(res)
-          res = JSON.parse(res.data)
-          console.log(res)
+          var _data = JSON.parse(res.data)
+          var _data_imgUrl = _data[0];
+          console.log(_data_imgUrl)
           self.setData({
-            imgUrl: res.data.imgUrl
+            DealImageUrl: _data_imgUrl.imgUrl
           })
+          e.detail.value.dealImageUrl = _data_imgUrl.imgUrl
+          console.log(e.detail.value)
           //提交表单
           wx.request({
             url: config.service.quotedPrice,
