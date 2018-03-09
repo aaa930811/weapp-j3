@@ -3,6 +3,8 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
+
+
 //获取应用实例
 const app = getApp()
 
@@ -124,6 +126,9 @@ Page({
         that.setData({
           imageList: res.tempFilePaths
         })
+        
+
+          //uploadTask.abort() // 取消上传任务
       }
     })
   },
@@ -154,49 +159,50 @@ Page({
       self.setData({
         loading: true
       })
-
       util.showBusy('上传图片中...')
-      // 上传图片
-      wx.uploadFile({
-        url: config.service.uploadUrl,
+      const uploadTask = wx.uploadFile({
+        url: config.service.uploadUrl, //仅为示例，非真实的接口地址
         filePath: imageSrc,
         name: 'file',
-
         success: function (res) {
-          util.showSuccess('上传图片成功')
+          var data = res.data
+          //do something
+          //util.showSuccess('图片上传成功')
           console.log(res)
           res = JSON.parse(res.data)
           console.log(res)
           self.setData({
             imgUrl: res.data.imgUrl
           })
-
-          util.showBusy('表单提交中...')
           //提交表单
           wx.request({
             url: config.service.quotedPrice,
-            method:'POST',
+            method: 'POST',
             data: e.detail.value,
             success: res2 => {
               self.setData({
                 loading: false
               })
-              if(res2.statusCode==201){
+              if (res2.statusCode == 201) {
                 util.showSuccess('提交成功')
                 console.log(res2)
-              }else{
+              } else {
                 util.showModel("提交失败", res2.data.Message)
               }
             },
             fail: function (message) {
-              util.showModel("提交失败",message)
+              util.showModel("提交失败", message)
             }
           })
-        },
-
-        fail: function (e) {
-          util.showModel('上传图片失败', e)
         }
+      })
+      uploadTask.onProgressUpdate((res) => {
+        self.setData({
+          percent: res.progress
+        })
+        console.log('上传进度', res.progress)
+        console.log('已经上传的数据长度', res.totalBytesSent)
+        console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
       })
     }else{
       util.showModel('提示','请选择交易截图')

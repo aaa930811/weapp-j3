@@ -46,8 +46,10 @@ Page({
     //     }
     //   ]
     // ],
+    array: ['金发', '盒子', '衣服', '披风', '其他'],
+    index: 0,
     multiIndex: [0, 0],
-    server:[0,1],
+    server:[0,0],
     date: new Date().toLocaleDateString(),
     today: new Date().toLocaleDateString()
   },
@@ -96,7 +98,12 @@ Page({
     }
     this.setData(data);
   },
-
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -119,10 +126,16 @@ Page({
           loading: false
         })
         console.log(res.data)
-        var quotes = JSON.stringify(res.data)
-        wx.navigateTo({
-          url: '../showPrice/showPrice?quotes='+quotes,
-        })
+        if (res.data.length!=0)
+        {
+          var quotes = JSON.stringify(res.data)
+          console.log(quotes)
+          wx.navigateTo({
+            url: '../showPrice/showPrice?quotes=' + quotes,
+          })
+        }else{
+          util.showModel("查询结果","没有数据")
+        }
       }
     })
   },

@@ -11,7 +11,7 @@
         <text>我要报价</text>
       </navigator>
     </view>
-    <view class='section'>
+    <!-- <view class='section'>
       <navigator url='../nba/nba' open-type='navigate' class='section-text'>
         <text>NBA赛事信息</text>
       </navigator>
@@ -20,15 +20,15 @@
       <navigator url='../template/template' open-type='navigate' class='section-text'>
         <text>模板消息</text>
       </navigator>
-    </view>
+    </view> -->
 
-    <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" width="355" height="150" />
         </swiper-item>
       </block>
-    </swiper> -->
+    </swiper> 
 
   </view>
 
