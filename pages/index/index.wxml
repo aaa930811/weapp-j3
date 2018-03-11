@@ -11,6 +11,7 @@
         <text>我要报价</text>
       </navigator>
     </view>
+  
     <!-- <view class='section'>
       <navigator url='../nba/nba' open-type='navigate' class='section-text'>
         <text>NBA赛事信息</text>

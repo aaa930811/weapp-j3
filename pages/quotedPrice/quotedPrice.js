@@ -50,8 +50,8 @@ Page({
       []
     ],
     objectMultiArray: [],
-    multiIndex: [0, 0],
-    server:[0, 1],
+    multiIndex: [1, 0],
+    server:[1, 8],
     date: new Date().toLocaleDateString(),
     today: new Date().toLocaleDateString(),
     DealImageUrl:'',
@@ -114,6 +114,9 @@ Page({
     this.setData({
       date: e.detail.value
     })
+  },
+  switch1Change: function (e) {
+    console.log('switch1 发生 change 事件，携带值为', e.detail.value)
   },
   chooseImage: function () {
     var that = this
@@ -181,10 +184,15 @@ Page({
             data: e.detail.value,
             success: res2 => {
               self.setData({
-                loading: false
+                loading: false,
+                productName:'',
+                productPrice:'',
+                date: new Date().toLocaleDateString(),
+                imageList:[],
+                countIndex: 0,
               })
               if (res2.statusCode == 201) {
-                util.showSuccess('提交成功')
+                util.showModel('提示','报价成功，可以查询到啦。')
                 console.log(res2)
               } else {
                 util.showModel("提交失败", res2.data.Message)
@@ -279,7 +287,7 @@ Page({
           regionList,
           regionArr
         })
-        var default_region_id = regionList[0]['region_id'];　　　　//获取默认的大区对应的 region_id
+        var default_region_id = regionList[1]['region_id'];　　　　//获取默认的大区对应的 region_id
         if (default_region_id >= 0) {
           that.searchService(default_region_id)　　　　　　// 如果存在调用获取对应的服务器数据
         }

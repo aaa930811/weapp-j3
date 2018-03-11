@@ -10,33 +10,36 @@
       </picker>
       <picker hidden='hidden' name='server' value='{{server}}'></picker>
     </view>
-    <view class='section'>
-    <view class="section__title">外观类型</view>
-        <picker bindchange="bindPickerChange" name='exteriorID' value="{{index}}" range="{{array}}">
+    <view class='section' wx:if="{{showCode==0}}">
+      <view class="section__title">外观类型</view>
+      <picker bindchange="bindPickerChange" name='exteriorID' value="{{index}}" range="{{array}}">
         <view class="picker">
           {{array[index]}}
         </view>
       </picker>
     </view>
-    <view class="section">
+    <view class="section"  wx:if="{{showCode==1}}">
       <view class="section__title">物品名称</view>
-      <input type="text" name="productname" placeholder='请输入名称（可为空）' />
+      <input type="text" name="productname" placeholder='请输入名称' />
     </view>
 
-    <view class="section">
+    <!-- <view class="section">
       <view class="section__title">成交时间</view>
       <picker mode="date" name="dealtime" value="{{date}}" start="2015-09-01" end="{{today}}" bindchange="bindDateChange">
         <view class="picker">
           {{date}}
         </view>
       </picker>
+    </view> -->
+    <view class='section'>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{items}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+        </label>
+      </radio-group>
     </view>
-   <!-- <view class="section sresult" wx:if="{{sresult.data}}">
-   <view class="section__title">查询结果</view>
-   <text>{{sresult.data}}</text>
-  </view> -->
-   <view class="btn-area">
-   <button  type="primary" form-type='submit' disabled="{{buttonDisabled}}" loading="{{loading}}">查询</button>
+    <view class="btn-area">
+      <button type="primary" form-type='submit' disabled="{{buttonDisabled}}" loading="{{loading}}">查询</button>
       <!-- <button formType="reset">重置</button> -->
     </view>
   </form>

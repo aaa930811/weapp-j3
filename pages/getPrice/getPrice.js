@@ -48,10 +48,15 @@ Page({
     // ],
     array: ['金发', '盒子', '衣服', '披风', '其他'],
     index: 0,
-    multiIndex: [0, 0],
-    server:[0,0],
+    multiIndex: [1, 0],
+    server:[1,0],
     date: new Date().toLocaleDateString(),
-    today: new Date().toLocaleDateString()
+    today: new Date().toLocaleDateString(),
+    items: [
+      { name: '0', value: '按外观类型查询', checked: 'true' },
+      { name: '1', value: '按物品名称查询'}
+    ],
+    showCode:0
   },
 
   bindMultiPickerChange: function (e) {
@@ -110,7 +115,12 @@ Page({
       date: e.detail.value
     })
   },
-
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      showCode: e.detail.value
+    })
+  },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var self = this
@@ -134,7 +144,20 @@ Page({
             url: '../showPrice/showPrice?quotes=' + quotes,
           })
         }else{
-          util.showModel("查询结果","没有数据")
+          wx.showModal({
+            title: '提示',
+            content: '没有数据。可能没有报价或关键词错误。是否跳转至关键词列表？',
+            cancelText:'取消',
+            confirmText:'跳转',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                //跳转
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
         }
       }
     })
@@ -188,7 +211,7 @@ Page({
           regionList,
           regionArr
         })
-        var default_region_id = regionList[0]['region_id'];　　　　//获取默认的大区对应的 region_id
+        var default_region_id = regionList[1]['region_id'];　　　　//获取默认的大区对应的 region_id
         if (default_region_id>=0) {
           that.searchService(default_region_id)　　　　　　// 如果存在调用获取对应的服务器数据
         }

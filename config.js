@@ -3,8 +3,8 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://f28cwwb0.qcloud.la';
-var host2 = 'https://shenao.iok.la';
+//var host = 'https://f28cwwb0.qcloud.la';
+var host = 'https://J3Price.cn';
 var localhost = 'http://192.168.0.104/J3Price';
 var config = {
 
@@ -19,28 +19,28 @@ var config = {
     requestUrl: `${host}/weapp/user`,
 
     // 用code换取openId
-    openIdUrl: `https://${host}/openid`,
+    openIdUrl: `${host}/openid`,
 
     // 测试的信道服务地址
     tunnelUrl: `${host}/weapp/tunnel`,
 
     // 上传图片接口
-    uploadUrl: `${localhost}/api/Pictures/Post`,
+    uploadUrl: `${host}/api/Pictures/Post`,
 
     // 发送模板消息接口
-    templateMessageUrl: `https://${host}/templateMessage`,
+    templateMessageUrl: `${host}/templateMessage`,
 
     //报价数据查询地址
-    getPriceUrl: `${localhost}/api/Quotes/GetQuotes`,
+    getPriceUrl: `${host}/api/Quotes/GetQuotes`,
 
     //报价数据提交地址
-    quotedPrice: `${localhost}/api/Quotes/PostQuotes`,
+    quotedPrice: `${host}/api/Quotes/PostQuotes`,
 
     //获取大区
-    getRegion: `${localhost}/api/Region/GetRegion`,
+    getRegion: `${host}/api/Region/GetRegion`,
 
     //获取服务器
-    getService: `${localhost}/api/Service/GetService`
+    getService: `${host}/api/Service/GetService`
   }
 };
 

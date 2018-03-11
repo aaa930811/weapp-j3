@@ -50,6 +50,19 @@ input{
   flex-direction: row;
   align-items: center;
 }
+.body-view{
+  height: 100rpx;
+    /* width: 100%; */
+    padding: 0 40rpx;
+    margin-right: 40rpx;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.small-text{
+  color:#888888;
+  font-size: 11pt;
+}
 progress{
   margin-top: 10rpx;
 }
