@@ -153,6 +153,9 @@ Page({
               if (res.confirm) {
                 console.log('用户点击确定')
                 //跳转
+                wx.navigateTo({
+                  url: '../productList/productList'
+                })
               } else if (res.cancel) {
                 console.log('用户点击取消')
               }

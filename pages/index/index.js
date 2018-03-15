@@ -1,4 +1,6 @@
 //index.js
+var config = require('../../config')
+var util = require('../../utils/util.js')
 //获取应用实例
 const app = getApp()
 
@@ -8,10 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [
-      'https://i.loli.net/2017/08/14/59918cd0a7ca7.jpg',
-      'https://i.loli.net/2017/11/09/5a03f25a94182.png'
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -24,6 +23,7 @@ Page({
     })
   },
   onLoad: function () {
+    var that = this
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -51,6 +51,18 @@ Page({
         }
       })
     }
+    wx.request({
+      url: config.service.getAdImageUrl,
+      data:{},
+      success:Ad_data=>{
+        console.log(Ad_data)
+        if(Ad_data.statusCode==200){
+          that.setData({
+            imgUrls:Ad_data.data
+          })
+        }
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

@@ -1,0 +1,32 @@
+/* pages/productList/productList.wxss */
+page {
+  font-size: 8px;
+  color: #333;
+}
+.container{
+  align-items: center;
+}
+.table {
+  margin-top: 30rpx;
+  border: 1px solid #dadada; 
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+}
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size:12px;
+}
+.th,.td {
+  padding: 9rpx;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+}
+.th {
+  font-weight: 400;
+  background-color: #dadada;
+}

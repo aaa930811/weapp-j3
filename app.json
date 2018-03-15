@@ -5,13 +5,14 @@
     "pages/getPrice/getPrice",
     "pages/quotedPrice/quotedPrice",
     "pages/showPrice/showPrice",
+    "pages/productList/productList",
     "pages/nba/nba",
     "pages/template/template"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "剑三物价",
+    "navigationBarTitleText": "物价君小小黑",
     "navigationBarTextStyle":"black"
   }
 }

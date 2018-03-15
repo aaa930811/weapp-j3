@@ -36,11 +36,17 @@ var config = {
     //报价数据提交地址
     quotedPrice: `${host}/api/Quotes/PostQuotes`,
 
+    //获取物品列表
+    getProduct: `${host}/api/Products/GetProducts`,
+
     //获取大区
     getRegion: `${host}/api/Region/GetRegion`,
 
     //获取服务器
-    getService: `${host}/api/Service/GetService`
+    getService: `${host}/api/Service/GetService`,
+
+    //获取广告图片地址
+    getAdImageUrl: `${host}/api/Ad/GetAdImageUrl`
   }
 };
 
