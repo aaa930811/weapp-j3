@@ -1,0 +1,24 @@
+<!--pages/productList/productList.wxml-->
+<view class='container'>
+  <view class="table">
+    <view class="tr">
+      <!-- <view class="th">大区</view> -->
+      <view class="th">类别</view>
+      <view class="th">关键词</view>
+      <!-- <view class="th">昵称1</view>
+      <view class="th">昵称2</view>
+      <view class="th">昵称3</view>
+      <view class="th">昵称4</view>
+      <view class="th">昵称5</view> -->
+    </view>
+    <view class="tr" wx:for="{{products}}">
+      <view class="td">{{item.ExteriorName}}</view>
+      <view class="td">{{item.ProductName}}</view>
+      <!-- <view class="td">{{item.ProductNickName1}}</view>
+      <view class="td">{{item.ProductNickName2}}</view>
+      <view class="td">{{item.ProductNickName3}}</view>
+      <view class="td">{{item.ProductNickName4}}</view>
+      <view class="td">{{item.ProductNickName5}}</view> -->
+    </view>
+  </view>
+</view>
