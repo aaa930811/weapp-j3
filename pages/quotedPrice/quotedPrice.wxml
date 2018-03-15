@@ -49,7 +49,7 @@
         <view class="weui-cell__bd">
           <view class="weui-uploader">
             <view class="weui-uploader__hd">
-              <view class="weui-uploader__title">选择交易截图<text class='small-text'>（不公开不外泄）</text></view>
+              <view class="weui-uploader__title">转账或平台订单截图<text class='small-text'>（不公开不外泄）</text></view>
               <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
             </view>
             <view class="weui-uploader__bd">
