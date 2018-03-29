@@ -8,7 +8,7 @@
     <view class='section'>
       <view class='section__title'>匿名</view>
         <view class="body-view">
-          <switch checked bindchange="switch1Change" name='isAnonymous'/>
+          <switch bindchange="switch1Change" name='isAnonymous'/>
         </view>
     </view>
     <view class="section">
