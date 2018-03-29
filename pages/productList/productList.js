@@ -8,9 +8,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    products:[]
+    products:[],
+    _products:[],
+    array: ['全部','金发', '盒子', '衣服', '披风', '其他'],
+    index: 0
   },
-
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var tname = this.data.array[e.detail.value]
+    console.log(tname)
+    this.setData({
+      index: e.detail.value
+    })
+    if (tname=='全部')
+    {
+      this.setData({
+        _products: this.data.products
+      })
+    }else{
+      var _products=[]
+      this.data.products.map(function (currentValue, index){
+        if (currentValue.ExteriorName==tname){
+          _products.push(currentValue)
+        }
+      })
+      this.setData({
+        _products: _products
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,7 +48,8 @@ Page({
       success: res=> {
         console.log(res.data)
         that.setData({
-          products:res.data
+          products:res.data,
+          _products: res.data
         })
       }
     })

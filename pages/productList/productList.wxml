@@ -3,7 +3,15 @@
   <view class="table">
     <view class="tr">
       <!-- <view class="th">大区</view> -->
-      <view class="th">类别</view>
+      <view class="th">
+        <span>类别：</span>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index]}}
+          </view>
+        </picker>
+        <span class='tri-down'></span>
+      </view>
       <view class="th">关键词</view>
       <!-- <view class="th">昵称1</view>
       <view class="th">昵称2</view>
@@ -11,7 +19,7 @@
       <view class="th">昵称4</view>
       <view class="th">昵称5</view> -->
     </view>
-    <view class="tr" wx:for="{{products}}">
+    <view class="tr" wx:for="{{_products}}">
       <view class="td">{{item.ExteriorName}}</view>
       <view class="td">{{item.ProductName}}</view>
       <!-- <view class="td">{{item.ProductNickName1}}</view>
