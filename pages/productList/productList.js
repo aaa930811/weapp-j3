@@ -10,7 +10,7 @@ Page({
   data: {
     products:[],
     _products:[],
-    array: ['全部','金发', '盒子', '衣服', '披风', '其他'],
+    array: ['全部','头发', '盒子', '衣服', '披风', '其他'],
     index: 0
   },
   bindPickerChange: function (e) {
