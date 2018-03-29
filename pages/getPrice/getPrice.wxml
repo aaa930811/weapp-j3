@@ -9,6 +9,7 @@
         </view>
       </picker>
       <picker hidden='hidden' name='server' value='{{server}}'></picker>
+       <span class='tri-down'></span>
     </view>
     <view class='section' wx:if="{{showCode==0}}">
       <view class="section__title">外观类型</view>
@@ -17,6 +18,7 @@
           {{array[index]}}
         </view>
       </picker>
+       <span class='tri-down'></span>
     </view>
     <view class="section"  wx:if="{{showCode==1}}">
       <view class="section__title">物品名称</view>

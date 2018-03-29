@@ -34,7 +34,7 @@ form{
 .picker {
   height: 100rpx;
   width: 100%; 
-  padding: 0 40rpx;
+  padding:0 10rpx 0 40rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
