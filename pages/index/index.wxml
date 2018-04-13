@@ -11,11 +11,11 @@
         <text>我要报价</text>
       </navigator>
     </view>
-    <!-- <view class='section'>
+     <view class='section'>
       <navigator url='../productList/productList' open-type='navigate' class='section-text'>
         <text>关键词列表</text>
       </navigator>
-    </view> -->
+    </view> 
   
     <!-- <view class='section'>
       <navigator url='../nba/nba' open-type='navigate' class='section-text'>
