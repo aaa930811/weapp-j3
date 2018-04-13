@@ -30,6 +30,10 @@ swiper{
   width: 100%;
   text-align: center;
 }
+.slide-image{
+  width:375px;
+  height:100px;
+}
 .disable {
   color: #888;
 }

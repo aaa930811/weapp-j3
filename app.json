@@ -4,10 +4,7 @@
     "pages/logs/logs",
     "pages/getPrice/getPrice",
     "pages/quotedPrice/quotedPrice",
-    "pages/showPrice/showPrice",
-    "pages/productList/productList",
-    "pages/nba/nba",
-    "pages/template/template"
+    "pages/showPrice/showPrice"
   ],
   "window":{
     "backgroundTextStyle":"light",

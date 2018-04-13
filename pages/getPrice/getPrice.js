@@ -135,7 +135,7 @@ Page({
         self.setData({
           loading: false
         })
-        console.log(res.data)
+        console.log(res)
         if (res.data.length!=0)
         {
           var quotes = JSON.stringify(res.data)
@@ -146,20 +146,20 @@ Page({
         }else{
           wx.showModal({
             title: '提示',
-            content: '没有数据。可能没有报价或关键词错误。是否跳转至关键词列表？',
-            cancelText:'取消',
-            confirmText:'跳转',
-            success: function (res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-                //跳转
-                wx.navigateTo({
-                  url: '../productList/productList'
-                })
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
-            }
+            content: '没有数据。可能没有报价或关键词错误。关键词列表请看公众号菜单栏~',
+            showCancel:false,
+            confirmText:'确定',
+            // success: function (res) {
+            //   if (res.confirm) {
+            //     console.log('用户点击确定')
+            //     //跳转
+            //     wx.navigateTo({
+            //       url: '../productList/productList'
+            //     })
+            //   } else if (res.cancel) {
+            //     console.log('用户点击取消')
+            //   }
+            // }
           })
         }
       }

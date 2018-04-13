@@ -4,8 +4,8 @@
     <view class="tr">
       <!-- <view class="th">大区</view> -->
       <view class="th">服务器</view>
-      <view class="th">价格</view>
-      <view class="th">收售</view>
+      <view class="th price">价格</view>
+      <view class="th saletype">收售</view>
       <view class="th">名称</view>
       <view class="th">成交时间</view>
       <!-- <view class="th">报价时间</view> -->
@@ -14,8 +14,8 @@
     <view class="tr" wx:for="{{quotes}}">
       <!-- <view class="td">{{item.RegionName}}</view> -->
       <view class="td">{{item.ServiceNickName}}</view>
-      <view class="td">{{item.ProducPrice}}</view>
-      <view class="td">{{item.SaleTypeName}}</view>
+      <view class="td price">{{item.ProducPrice}}</view>
+      <view class="td saletype">{{item.SaleTypeName}}</view>
       <view class="td">{{item.ProductName}}</view>
       <view class="td">{{item.DealTime}}</view>
       <!-- <view class="td">{{item.QuotationTime}}</view> -->

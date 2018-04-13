@@ -25,8 +25,21 @@ page {
   border-right: 1px solid #dadada;
   text-align: center;
   width: 100%;
+  word-break: break-all;
 }
 .th {
   font-weight: 400;
   background-color: #dadada;
+}
+.td{
+  min-height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.price{
+  width: 600rpx;
+}
+.saletype{
+  width: 600rpx;
 }
