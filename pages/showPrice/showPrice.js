@@ -1,20 +1,33 @@
 // pages/showPrice/showPrice.js
+var config = require('../../config')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    quotes:[]
+    quotes:[],
+    query:[]
   },
-
+  stopPullDownRefresh: function () {
+    wx.stopPullDownRefresh({
+      complete: function (res) {
+        wx.hideToast()
+        console.log(res, new Date())
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var quotes = JSON.parse(options.quotes)
+    var query = JSON.parse(options.query)
+    
     this.setData({
-        quotes:quotes
+        quotes:quotes,
+        query: query
     })
   },
 
@@ -50,7 +63,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    var that = this;
+    wx.showToast({
+      title: '数据刷新中...',
+      icon: 'loading'
+    })
+    console.log('onPullDownRefresh', new Date())
+    wx.request({
+      url: config.service.getPriceUrl,
+      data: that.data.query,
+      success: res => {
+        console.log(res)
+        if (res.data.length != 0) {
+          console.log(res.data)
+          that.setData({
+            quotes: res.data
+          })
+        }
+        wx.stopPullDownRefresh({
+          complete: function (res) {
+            // wx.hideToast()
+            console.log(res, new Date())
+          }
+        })
+      }
+    })
   },
 
   /**

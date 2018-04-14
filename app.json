@@ -8,9 +8,10 @@
     "pages/productList/productList"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#F8F8F8",
     "navigationBarTitleText": "物价君小小黑",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#F8F8F8"
   }
 }

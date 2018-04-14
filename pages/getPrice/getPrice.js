@@ -141,7 +141,7 @@ Page({
           var quotes = JSON.stringify(res.data)
           console.log(quotes)
           wx.navigateTo({
-            url: '../showPrice/showPrice?quotes=' + quotes,
+            url: '../showPrice/showPrice?quotes=' + quotes + '&query=' + JSON.stringify(e.detail.value),
           })
         }else{
           wx.showModal({

@@ -2,6 +2,7 @@
 page {
   font-size: 8px;
   color: #333;
+  background-color: #F8F8F8;
 }
 .container{
   align-items: center;
