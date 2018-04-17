@@ -158,7 +158,8 @@ Page({
     if(imageSrc)
     {
       self.setData({
-        loading: true
+        loading: true,
+        buttonDisabled:true
       })
       util.showBusy('上传图片中...')
       const uploadTask = wx.uploadFile({
@@ -185,6 +186,7 @@ Page({
             success: res2 => {
               self.setData({
                 loading: false,
+                buttonDisabled:false,
                 productName:'',
                 productPrice:'',
                 date: new Date().toLocaleDateString(),
@@ -192,10 +194,28 @@ Page({
                 countIndex: 0,
               })
               if (res2.statusCode == 201) {
-                util.showModel('提示','报价成功，可以查询到啦。')
+                util.showSuccess('报价成功')
                 console.log(res2)
               } else {
-                util.showModel("提交失败", res2.data.Message)
+                wx.hideToast();
+                wx.showModal({
+                  title: '提交失败',
+                  content: res2.data.Message,
+                  // showCancel:false,
+                  cancelText: '取消',
+                  confirmText: '跳转',
+                  success: function (res) {
+                    if (res.confirm) {
+                      console.log('用户点击确定')
+                      //跳转
+                      wx.navigateTo({
+                        url: '../productList/productList'
+                      })
+                    } else if (res.cancel) {
+                      console.log('用户点击取消')
+                    }
+                  }
+                })
               }
             },
             fail: function (message) {
