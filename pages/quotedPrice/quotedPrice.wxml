@@ -36,7 +36,7 @@
     </view>
     <view class="section">
       <view class="section__title">价格（元）</view>
-      <input type="digit" name='productPrice' value='{{productPrice}}' placeholder='请输入价格' />
+      <input type="text" name='productPrice' value='{{productPrice}}' placeholder='请输入价格' />
     </view>
     <view class="section">
       <view class="section__title">成交时间</view>
