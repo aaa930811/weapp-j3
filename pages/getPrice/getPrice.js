@@ -109,31 +109,33 @@ Page({
       index: e.detail.value
     })
   },
-  bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      date: e.detail.value
-    })
-  },
-  radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-    this.setData({
-      showCode: e.detail.value
-    })
-  },
+  // bindDateChange: function (e) {
+  //   console.log('picker发送选择改变，携带值为', e.detail.value)
+  //   this.setData({
+  //     date: e.detail.value
+  //   })
+  // },
+  // radioChange: function (e) {
+  //   console.log('radio发生change事件，携带value值为：', e.detail.value)
+  //   this.setData({
+  //     showCode: e.detail.value
+  //   })
+  // },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var self = this
 
     self.setData({
-      loading: true
+      loading: true,
+      buttonDisabled: true
     })
     wx.request({
       url: config.service.getPriceUrl,
       data: e.detail.value,
       success:res=>{
         self.setData({
-          loading: false
+          loading: false,
+          buttonDisabled: false
         })
         console.log(res)
         if (res.data.length!=0)
@@ -172,7 +174,7 @@ Page({
       this.setData({
         region_id: region_id
       })
-      var url = config.service.getService;
+      //var url = config.service.getService;
       wx.request({
         url: config.service.getService,
         data:{

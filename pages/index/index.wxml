@@ -27,7 +27,7 @@
         <text>模板消息</text>
       </navigator>
     </view> -->
-
+<ad unit-id="adunit-a7d348fe8d8f0b7e"></ad>
      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
