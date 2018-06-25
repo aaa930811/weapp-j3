@@ -69,3 +69,14 @@ progress{
 .weui-cell{
   width: 100%;
 }
+.btn-small{
+  border-radius: 10rpx;
+  border-color: #09BB07;
+  background-color: #fff;
+  color: #1aad19;
+  border:1px solid;
+  height:34px;
+  line-height:34px;
+  padding-left:10px;
+  padding-right:10px;
+}

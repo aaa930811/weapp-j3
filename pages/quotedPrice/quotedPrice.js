@@ -14,8 +14,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
+    //userInfo: {},
+    //hasUserInfo: false,
+    isAuthorize:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     array: ['出了', '淘宝价出了', '低于市价出了', '收了', '淘宝价收了', '低于市价收了'],
     objectArray: [
@@ -264,35 +265,61 @@ Page({
       })
     }
   },
-  getUserInfo: function () {
-    var that = this
+  // getUserInfo: function () {
+  //   var that = this
 
-    if (app.globalData.hasLogin === false) {
-      wx.login({
-        success: _getUserInfo
-      })
-    } else {
-      _getUserInfo()
-    }
+  //   if (app.globalData.hasLogin === false) {
+  //     wx.login({
+  //       success: _getUserInfo
+  //     })
+  //   } else {
+  //     _getUserInfo()
+  //   }
 
-    function _getUserInfo() {
-      wx.getUserInfo({
-        success: function (res) {
-          that.setData({
-            hasUserInfo: true,
-            userInfo: res.userInfo
-          })
-          that.update()
-        }
-      })
-    }
+  //   function _getUserInfo() {
+  //     wx.getUserInfo({
+  //       success: function (res) {
+  //         that.setData({
+  //           hasUserInfo: true,
+  //           userInfo: res.userInfo
+  //         })
+  //         that.update()
+  //       }
+  //     })
+  //   }
+  // },
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
+    this.setData({
+      isAuthorize: true,
+      nickName: e.detail.userInfo.nickName
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    that.getUserInfo();
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            isAuthorize: true
+          })
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo)
+              that.setData({
+                nickName: res.userInfo.nickName
+              })
+            }
+          })
+        }
+      }
+    })
+    //that.getUserInfo();
     wx.request({
       url: config.service.getRegion,
       data: {},
