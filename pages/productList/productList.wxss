@@ -35,3 +35,6 @@ page {
   align-items: center;
   font-size: 11pt;
 }
+.smallw{
+  max-width: 85rpx;
+}

@@ -1,0 +1,2 @@
+<!--pages/showImage/showImage.wxml-->
+<image mode="aspectFit" src='{{link}}'></image>

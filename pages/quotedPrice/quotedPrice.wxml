@@ -8,7 +8,7 @@
             <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='btn-small'>点击获取</button>
             <view wx:else>请升级微信版本</view>
         </view>
-        <input wx:else type="text" disabled name="bidder" value='{{nickName}}'></input>
+        <input wx:else type="text" name="bidder" value='{{nickName}}'></input>
     </view>
     <view class='section'>
       <view class='section__title'>匿名</view>

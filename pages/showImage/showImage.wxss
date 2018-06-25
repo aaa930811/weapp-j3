@@ -1,0 +1,7 @@
+/* pages/showImage/showImage.wxss */
+image{
+  width: calc( 100% - 60rpx);
+  height: 100%;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}

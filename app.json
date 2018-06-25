@@ -5,7 +5,8 @@
     "pages/getPrice/getPrice",
     "pages/quotedPrice/quotedPrice",
     "pages/showPrice/showPrice",
-    "pages/productList/productList"
+    "pages/productList/productList",
+    "pages/showImage/showImage"
   ],
   "window":{
     "backgroundTextStyle":"black",
