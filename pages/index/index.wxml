@@ -28,10 +28,11 @@
       </navigator>
     </view> -->
      <ad unit-id="adunit-a7d348fe8d8f0b7e"></ad>
+     <!-- <image src='{{imgUrl}}' class='ad-pic' bindtap='bindAdTap'></image> -->
      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" width="355" height="150" />
+          <image src="{{item}}" class="slide-image" width="355" height="150" bindtap='bindAdTap' data-src='{{item}}'/>
         </swiper-item>
       </block>
     </swiper> 

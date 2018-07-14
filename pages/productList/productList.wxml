@@ -15,23 +15,15 @@
       <view class="th">关键词</view>
        <view class="th">官方名</view>
        <view class="th smallw">图片</view>
-      <!-- <view class="th">昵称2</view>
-      <view class="th">昵称3</view>
-      <view class="th">昵称4</view>
-      <view class="th">昵称5</view>  -->
     </view>
     <view class="tr" wx:for="{{_products}}">
       <view class="td">{{item.ExteriorName}}</view>
       <view class="td">{{item.ProductName}}</view>
         <view class="td">{{item.ProductNickName1}}</view>
         <view class="td smallw">
-         <navigator wx:if="{{item.ProductImageUrl}}" url="../showImage/showImage?link={{item.ProductImageUrl}}&title={{item.ProductName}}">查看</navigator> 
-        <!-- <navigator url="../showImage/showImage?link=http://images.tmtpost.com/uploads/images/2018/06/20180625162104459.jpg&title={{item.ProductName}}">查看</navigator> -->
+         <text wx:if="{{item.ProductImageUrl}}" data-url="{{item.ProductImageUrl}}" bindtap='bindPicTap'>查看</text>
+        <!-- <text data-url="http://images.tmtpost.com/uploads/images/2018/06/20180625162104459.jpg" bindtap='bindPicTap'>查看</text> -->
         </view>
-      <!-- <view class="td">{{item.ProductNickName2}}</view>
-      <view class="td">{{item.ProductNickName3}}</view>
-      <view class="td">{{item.ProductNickName4}}</view>
-      <view class="td">{{item.ProductNickName5}}</view>   -->
     </view>
   </view>
 </view>

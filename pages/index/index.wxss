@@ -21,9 +21,18 @@ overflow:hidden;
   font-size: 34rpx;
   padding: 30rpx 0 30rpx 60rpx;
 }
+/* .ad-pic{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+} */
 swiper{
   position: absolute;
-  bottom: 70rpx;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 100px;

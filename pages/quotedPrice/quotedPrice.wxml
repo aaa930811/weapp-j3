@@ -5,6 +5,7 @@
       <view class="section__title">昵称</view>
       <view class="body-view" wx:if="{{!isAuthorize}}">
   <!-- 需要使用 button 来授权登录 -->
+            <input type="text" hidden='hidden' name="bidder" value=''></input>
             <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='btn-small'>点击获取</button>
             <view wx:else>请升级微信版本</view>
         </view>

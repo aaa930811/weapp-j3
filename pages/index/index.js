@@ -22,6 +22,13 @@ Page({
       url: '../logs/logs'
     })
   },
+  bindAdTap: function (e) {
+    var imgs = this.data.imgUrls
+    wx.previewImage({
+      current: e.target.dataset.src, // 当前显示图片的http链接
+      urls: imgs // 需要预览的图片http链接列表
+    })
+  },
   onLoad: function () {
     var that = this
     if (app.globalData.userInfo) {
