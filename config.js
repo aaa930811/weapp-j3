@@ -5,7 +5,7 @@
 // 此处主机域名修改成腾讯云解决方案分配的域名
 //var host = 'https://f28cwwb0.qcloud.la';
 var host = 'https://J3Price.cn';
-var localhost = 'http://192.168.0.104/J3Price';
+//var host = 'http://192.168.0.102/J3Price';
 var config = {
 
   // 下面的地址配合云端 Demo 工作

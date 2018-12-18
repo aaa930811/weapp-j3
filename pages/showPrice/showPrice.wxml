@@ -12,12 +12,12 @@
       <view class="th">报价人</view>
     </view>
     <view class="tr" wx:for="{{quotes}}">
+      <view class="td">{{item.DealTime}}</view>
       <!-- <view class="td">{{item.RegionName}}</view> -->
       <view class="td">{{item.ServiceNickName}}</view>
       <view class="td price">{{item.ProducPrice}}</view>
       <view class="td saletype">{{item.SaleTypeName}}</view>
       <view class="td">{{item.ProductName}}</view>
-      <view class="td">{{item.DealTime}}</view>
       <!-- <view class="td">{{item.QuotationTime}}</view> -->
       <view class="td">{{item.Bidder}}</view>
     </view>

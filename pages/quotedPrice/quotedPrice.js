@@ -195,7 +195,15 @@ Page({
                 countIndex: 0,
               })
               if (res2.statusCode == 201) {
-                util.showSuccess('报价成功')
+                var query = {
+                  productName: e.detail.value.productName,
+                  server: e.detail.value.server
+                }
+                util.showSuccessCallback('报价成功',function(){
+                  wx.navigateTo({
+                    url: '../showPrice/showPrice?query=' + JSON.stringify(query)
+                  })
+                })
                 console.log(res2)
               } else {
                 wx.hideToast();

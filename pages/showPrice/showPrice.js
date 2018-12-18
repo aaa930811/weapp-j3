@@ -22,13 +22,35 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    var quotes = JSON.parse(options.quotes)
-    var query = JSON.parse(options.query)
-    
-    this.setData({
-        quotes:quotes,
+    if(options.quotes==null)
+    {
+      //从报价页面跳转过来
+      var query = JSON.parse(options.query);
+      var that = this;
+      wx.request({
+        url: config.service.getPriceUrl,
+        data: query,
+        success: res => {
+          console.log(res)
+          if (res.data.length != 0) {
+            console.log(res.data)
+            that.setData({
+              quotes: res.data,
+              query:query
+            })
+          }
+        }
+      })
+    }else{
+      //从报价查询页面跳转过来
+      var quotes = JSON.parse(options.quotes)
+      var query = JSON.parse(options.query)
+
+      this.setData({
+        quotes: quotes,
         query: query
-    })
+      })
+    }
   },
 
   /**
@@ -68,7 +90,7 @@ Page({
       title: '数据刷新中...',
       icon: 'loading'
     })
-    console.log('onPullDownRefresh', new Date())
+    //console.log('onPullDownRefresh', new Date())
     wx.request({
       url: config.service.getPriceUrl,
       data: that.data.query,

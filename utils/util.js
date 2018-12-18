@@ -28,6 +28,13 @@ var showSuccess = text => wx.showToast({
   icon: 'success'
 })
 
+//显示成功提示（带回调函数）
+var showSuccessCallback = (text,callback) => wx.showToast({
+  title: text,
+  icon: 'success',
+  complete: callback
+})
+
 // 显示失败提示
 var showModel = (title, content) => {
   wx.hideToast();
@@ -38,5 +45,5 @@ var showModel = (title, content) => {
     showCancel: false
   })
 }
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { formatTime, showBusy, showSuccess, showSuccessCallback,showModel }
 
