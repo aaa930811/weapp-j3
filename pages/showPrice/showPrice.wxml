@@ -2,12 +2,12 @@
 <view class='container'>
   <view class="table">
     <view class="tr">
+      <view class="th">成交时间</view>
       <!-- <view class="th">大区</view> -->
       <view class="th">服务器</view>
       <view class="th price">价格</view>
       <view class="th saletype">收售</view>
       <view class="th">名称</view>
-      <view class="th">成交时间</view>
       <!-- <view class="th">报价时间</view> -->
       <view class="th">报价人</view>
     </view>
